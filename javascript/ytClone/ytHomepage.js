@@ -59,24 +59,6 @@ function renderVideos(videosArray){
         </article>`);
 
     const htmlString = htmlArray.join("");
-    // let html = "";
-    // for (let i = 0; i < videosArray.length; i++){
-    //     html +=
-    //     `<article class="video-card">
-    //         <img class="thumbnail" alt="thumbnail" src="thumbnail.png">
-
-    //         <div class="video-info">
-    //             <img class="channel-logo" alt="logo" src="logo.png">
-
-    //             <div>
-    //                 <h3>${videosArray[i].title}</h3>
-    //                 <p>${videosArray[i].channel}</p>
-    //                 <p>${videosArray[i].views}</p>
-    //             </div>
-                
-    //         </div>
-    //     </article>`
-    // };
 
     videoGrid.innerHTML = htmlString;
 };
