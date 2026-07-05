@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <title>AKTU login</title>
+    <link rel="stylesheet" href="form.css">
+
+    <style>
+        *{
+            box-sizing: border-box;
+        }
+        #login_page {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .login_btn{
+            border: none;
+            padding: 10px;
+            margin-top: 30px;
+            background-color: rgb(255, 138, 138);
+            color: white;
+        }
+
+        .heading{
+            color: black;
+        }
+
+        .login_form{
+            background-color: black;
+            margin: 20px;
+            border: 1px black solid;
+            display: flex;
+            flex-direction: column;
+            padding: 20px;
+        }
+
+        input{
+            border: 1px solid white;
+            font-size: 13px;
+            padding-right: 10px;
+            padding-top: 2px;
+            padding-bottom: 2px;
+        }
+
+        .login_element p{
+            margin-bottom: 2px;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="login_page">
+        <h1 class="heading">AKTU Student Login</h1>
+
+        <form class="login_form">
+            <div id="username" class="login_element">
+                <p style="margin-bottom: 2px; color: white;">
+                    Username</p>
+                <input id="username_ip" type="text" placeholder="Enter your Username">
+            </div>
+            
+            <div id="password" class="login_element">
+                <p style="">
+                    Password</p>
+                <input id="password_ip" type="password" placeholder="Enter your Password">
+            </div>
+            <button class="login_btn">Login</button>        
+        </form>
+    </div>
+</body>
+
+</html>

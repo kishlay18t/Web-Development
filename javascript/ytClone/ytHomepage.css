@@ -1,0 +1,258 @@
+*{
+    box-sizing: border-box;
+    font-family: roboto, sans-serif;
+}
+
+body{
+    background-color: rgb(14, 14, 14);
+    padding-right: 10px;
+}
+
+svg {
+    color: white;
+    width:24px;
+    height: 24px;    
+    font-weight: bold;
+}
+
+/* Header */
+    header {
+        display: flex;
+        position: sticky;
+        height: 40px;
+        margin: 0px;
+        padding: 0px;
+    }
+
+    header div{
+        display: flex;
+    }
+
+    header .left{
+        width: 20%;
+    }
+
+    .sidebar_toggle{
+        background-color: rgb(14,14,14);
+        border: none;
+        border-radius: 100%;
+        margin-right: 15px;
+        height: 35px;
+    }
+
+    .sidebar_toggle:hover{
+        background-color: rgb(57, 57, 57);
+    }
+
+    .sidebar_icon{
+        vertical-align: middle;
+    }
+
+    .yt_symbol{
+        width: 100%;
+        color: white;
+    }
+
+    .yt_icon{
+        color: white;
+    }
+
+    header .middle{
+        width: 60%;
+        display: flex;
+        justify-content: center;
+    }
+
+    .search_bar{
+        display: flex;
+        border-radius: 35px;
+        overflow: hidden;
+        margin-right: 14px;
+        border: solid 2px rgb(83, 83, 83);
+        width: 80%;
+    }
+
+    .search_bar input{
+        overflow: hidden;
+        color: white;
+        border: none;
+        padding-left: 10px;
+        overflow: inherit;
+        background-color: rgb(14, 14, 14);
+        border-right: solid 2px rgb(83, 83, 83);
+        flex: 1;
+    }
+
+    .search_btn {
+        border: none;
+        background-color: rgb(52, 52, 52);
+        width: 78px;
+    }
+
+    .mic_btn{
+        width: 9%;
+        background-color: rgb(57, 57, 57);
+        border: none;
+        border-radius: 90px;
+    }
+
+    header .right{
+        display: flex;
+        justify-content: flex-end ;
+        align-items: center;
+        width: 20%;
+        margin-right: -30px;
+    }
+
+    .create_btn{
+        background-color: rgb(57, 57, 57);
+        display: flex;
+        align-items: center;
+        border-radius: 25px;
+        border: none;
+        padding: 5px 11px;
+        padding-right: 14px;
+        margin-right: 5px;
+        height: 93%;
+    }
+
+    .create_icon{
+        margin-right: 5px;
+    }
+
+    .create_btn p{
+        color: white;
+        font-weight: bold;
+    }
+
+
+/* Main Content */
+.content-area{
+    display: flex;
+}
+
+/* Sidebar -- Collapsed*/
+
+.collapsed{
+    margin-top: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    width: 72px;
+    flex-shrink: 0;
+}
+
+.collapsed .item p{
+    color: white;
+}
+
+.collapsed .item{
+    font-size: 10px;
+    padding: 0px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgb(14, 14, 14);
+    border: none;
+    padding: 10px 4px;
+    border-radius: 8px;
+}
+
+.collapsed .item:hover{
+    background-color: rgb(40,40,40);
+}
+
+/* Sidebar -- Expanded */
+
+.expanded {
+    margin-top: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 200px;
+    flex-shrink: 0;
+}
+
+.expanded .item{
+    font-size: 10px;
+    display: flex;
+    align-items: center;
+    background-color: rgb(14, 14, 14);
+    border: none;
+    padding: 2px 15px;
+    border-radius: 8px;
+    width: 100%;
+}
+
+.expanded .item p{
+    color: white;
+    font-size: 15px;
+    padding-left: 19px;
+}
+
+.expanded .item:hover{
+    background-color: rgb(40,40,40);
+}
+
+/* Video Grid */
+
+main {
+    flex: 1;
+    margin: 0px 10px;
+}
+
+main section img{
+    color: white;
+}
+
+.video-grid{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.video-card{
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+    margin: 20px;
+    padding: 9px;
+    border-radius: 10px;
+    transition: 0.6s;
+}
+
+.video-card:hover{
+    background-color: rgb(45, 45, 49);
+}
+
+
+.video-info{
+    display: flex;
+    margin-top: 5px;
+}
+
+.thumbnail{
+    border-radius: inherit;
+}
+
+.channel-logo{
+    margin-right: 10px;
+}
+
+.video-text{
+    display: flex;
+    flex-direction: column;
+}
+
+.video-card p{
+    color: rgb(119, 119, 119);
+    margin: 0px;
+    font-size: 13px;
+    margin-top: 4px;
+    font-weight: 700;
+}
+
+.video-card h3{
+    color: rgb(231, 231, 231);
+    margin: 0px;
+    font-size: 20px;
+}
