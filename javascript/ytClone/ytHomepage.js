@@ -13,6 +13,7 @@ const searchBtn = document.getElementById("search_btn");
     APPLICATION DATA
 =====================================*/
 
+let isLoading = true;
 function getVideos(){
     return fetch("https://jsonplaceholder.typicode.com/posts")
     .then((response) => {
@@ -33,13 +34,6 @@ function getVideos(){
     })
     .catch((error) => console.log(error));
 };
-
-const videos = [];
-getVideos().then((fetchedVideos) => {
-    videos.push(...fetchedVideos);
-
-    renderVideos(videos);
-});
 
 // const videos = [
 //     {
@@ -70,6 +64,12 @@ getVideos().then((fetchedVideos) => {
 /*=====================================
     RENDERING
 =====================================*/
+function renderLoading() {
+    videoGrid.innerHTML =
+        `<p style="color: white">Loading Videos...<p>`;
+};
+
+
 function renderVideos(videosArray){
     const htmlArray = videosArray.map((video) => 
         `<article class="video-card">
@@ -102,6 +102,12 @@ function searchVideos(query){
 }
 
 function handleSearch(){
+
+    if (isLoading){
+        console.log("Videos are still loading!");
+        return;
+    }
+
     const query = searchInput.value;
     const searchedVideos = searchVideos(query);
     renderVideos(searchedVideos);
@@ -151,5 +157,12 @@ menuBtn.addEventListener("click", toggleSidebar);
 /*=====================================
     INITIALIZATION
 =====================================*/
-renderVideos(videos);
-console.log(videos);
+renderLoading();
+
+const videos = [];
+getVideos().then((fetchedVideos) => {
+    videos.push(...fetchedVideos);
+    isLoading = false;
+
+    renderVideos(videos);
+});
