@@ -14,26 +14,45 @@ const searchBtn = document.getElementById("search_btn");
 =====================================*/
 
 let isLoading = true;
-function getVideos(){
-    return fetch("https://jsonplaceholder.typicode.com/posts")
-    .then((response) => {
-        if (!response.ok){
-            throw new Error("HTTP error: " + response.status);
-        }
+// function getVideos(){
+//     return fetch("https://jsonplaceholder.typicode.com/posts")
+//     .then((response) => {
+//         if (!response.ok){
+//             throw new Error("HTTP error: " + response.status);
+//         }
 
-        return response.json();
-    })
-    .then((posts) =>{
-        return posts.map((post) => {
-            return {
+//         return response.json();
+//     })
+//     .then((posts) =>{
+//         return posts.map((post) => {
+//             return {
+//                 title: post.title,
+//                 channel: `User ${post.userId}`,
+//                 views: `Post ID: ${post.id}`
+//             };
+//         })
+//     })
+// };
+
+async function getVideos(){
+    const response = await fetch("https://jsonplaceholder.typicode.com/posts");
+
+    if (!response.ok){
+        throw new Error(
+            "HTTP error: " + response.status
+        );
+    }
+
+    const posts = await response.json();
+
+    return posts.map((post) => {
+        return {
                 title: post.title,
                 channel: `User ${post.userId}`,
                 views: `Post ID: ${post.id}`
             };
-        })
-    })
-    .catch((error) => console.log(error));
-};
+    });
+}
 
 // const videos = [
 //     {
@@ -66,7 +85,7 @@ function getVideos(){
 =====================================*/
 function renderLoading() {
     videoGrid.innerHTML =
-        `<p style="color: white">Loading Videos...<p>`;
+        `<p style="color: white">Loading Videos...</p>`;
 };
 
 
@@ -91,6 +110,11 @@ function renderVideos(videosArray){
 
     videoGrid.innerHTML = htmlString;
 };
+
+function renderError(error){
+    videoGrid.innerHTML =
+        `<p style="color: white">Failed to load videos: ${error.message}</p>`;
+}
 
 /*=====================================
     BUSINESS LOGIC
@@ -165,4 +189,9 @@ getVideos().then((fetchedVideos) => {
     isLoading = false;
 
     renderVideos(videos);
+})
+.catch((error) => {
+    isLoading = false;
+    renderError(error);
+    console.log(error);
 });
