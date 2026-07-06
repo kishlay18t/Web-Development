@@ -12,30 +12,59 @@ const searchBtn = document.getElementById("search_btn");
 /*=====================================
     APPLICATION DATA
 =====================================*/
-const videos = [
-    {
-        title: "Tips to be a better problem solver [Last live lecture]",
-        channel: "2Blue1Brown",
-        views: "1.7m views • Streamed 3 years ago"
-    },
-    {
-        title: "10 Ways to Get a BMW in GTA 5",
-        channel: "Fuming Gamer",
-        views: "6M views • Streamed 1 years ago"
-    },
 
-    {
-        title: "Extreme Hide and Seek Challange in an Abadoned Village",
-        channel: "MR Beast",
-        views: "113M views • Streamed 7 days ago"
-    },
+function getVideos(){
+    return fetch("https://jsonplaceholder.typicode.com/posts")
+    .then((response) => {
+        if (!response.ok){
+            throw new Error("HTTP error: " + response.status);
+        }
 
-    {
-        title: "Insane Indian Parkour Challenge",
-        channel: "Pete Anderson",
-        views: "17M views • Streamed 5 months ago"
-    }
-];
+        return response.json();
+    })
+    .then((posts) =>{
+        return posts.map((post) => {
+            return {
+                title: post.title,
+                channel: `User ${post.userId}`,
+                views: `Post ID: ${post.id}`
+            };
+        })
+    })
+    .catch((error) => console.log(error));
+};
+
+const videos = [];
+getVideos().then((fetchedVideos) => {
+    videos.push(...fetchedVideos);
+
+    renderVideos(videos);
+});
+
+// const videos = [
+//     {
+//         title: "Tips to be a better problem solver [Last live lecture]",
+//         channel: "2Blue1Brown",
+//         views: "1.7m views • Streamed 3 years ago"
+//     },
+//     {
+//         title: "10 Ways to Get a BMW in GTA 5",
+//         channel: "Fuming Gamer",
+//         views: "6M views • Streamed 1 years ago"
+//     },
+
+//     {
+//         title: "Extreme Hide and Seek Challange in an Abadoned Village",
+//         channel: "MR Beast",
+//         views: "113M views • Streamed 7 days ago"
+//     },
+
+//     {
+//         title: "Insane Indian Parkour Challenge",
+//         channel: "Pete Anderson",
+//         views: "17M views • Streamed 5 months ago"
+//     }
+// ];
 
 
 /*=====================================
@@ -119,11 +148,8 @@ createBtn.addEventListener("click", function(){
 
 menuBtn.addEventListener("click", toggleSidebar);
 
-/* let searchInput = document.getElementById("search_input");
- searchInput.addEventListener("input", search); */ 
-// For firing up the search which every letter input.
-
 /*=====================================
     INITIALIZATION
 =====================================*/
 renderVideos(videos);
+console.log(videos);
