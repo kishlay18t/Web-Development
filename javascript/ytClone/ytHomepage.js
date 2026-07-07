@@ -184,14 +184,34 @@ menuBtn.addEventListener("click", toggleSidebar);
 renderLoading();
 
 const videos = [];
-getVideos().then((fetchedVideos) => {
-    videos.push(...fetchedVideos);
-    isLoading = false;
+// getVideos().then((fetchedVideos) => {
+//     videos.push(...fetchedVideos);
+//     isLoading = false;
 
-    renderVideos(videos);
-})
-.catch((error) => {
-    isLoading = false;
-    renderError(error);
-    console.log(error);
-});
+//     renderVideos(videos);
+// })
+// .catch((error) => {
+//     isLoading = false;
+//     renderError(error);
+//     console.log(error);
+// });
+
+async function initializeApp(){
+    try{
+        const fetchedVideos = await getVideos();
+
+        videos.push(...fetchedVideos);
+        renderVideos(videos);
+    }
+    catch (error){
+        renderError(error);
+        console.log(error);
+    }
+    finally{
+        isLoading = false;
+    }
+};
+
+initializeApp();
+
+
