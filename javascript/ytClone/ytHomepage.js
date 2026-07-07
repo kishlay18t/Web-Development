@@ -45,11 +45,11 @@ async function getVideos(){
 
     const posts = await response.json();
 
-    return posts.map((post) => {
+    return posts.map(({title, userId, id}) => {
         return {
-                title: post.title,
-                channel: `User ${post.userId}`,
-                views: `Post ID: ${post.id}`
+                title: title,
+                channel: `User ${userId}`,
+                views: `Post ID: ${id}`
             };
     });
 }
@@ -90,7 +90,7 @@ function renderLoading() {
 
 
 function renderVideos(videosArray){
-    const htmlArray = videosArray.map((video) => 
+    const htmlArray = videosArray.map(({title, channel, views}) => 
         `<article class="video-card">
             <img class="thumbnail" alt="thumbnail" src="thumbnail.png">
 
@@ -98,9 +98,9 @@ function renderVideos(videosArray){
                 <img class="channel-logo" alt="logo" src="logo.png">
 
                 <div>
-                    <h3>${video.title}</h3>
-                    <p>${video.channel}</p>
-                    <p>${video.views}</p>
+                    <h3>${title}</h3>
+                    <p>${channel}</p>
+                    <p>${views}</p>
                 </div>
                 
             </div>
@@ -184,18 +184,6 @@ menuBtn.addEventListener("click", toggleSidebar);
 renderLoading();
 
 const videos = [];
-// getVideos().then((fetchedVideos) => {
-//     videos.push(...fetchedVideos);
-//     isLoading = false;
-
-//     renderVideos(videos);
-// })
-// .catch((error) => {
-//     isLoading = false;
-//     renderError(error);
-//     console.log(error);
-// });
-
 async function initializeApp(){
     try{
         const fetchedVideos = await getVideos();
@@ -210,8 +198,6 @@ async function initializeApp(){
     finally{
         isLoading = false;
     }
-};
+}
 
 initializeApp();
-
-
