@@ -7,12 +7,14 @@ import { getVideos } from "./api.js";
 const menuBtn = document.getElementById("menu-btn");
 const searchInput = document.getElementById("search_input");
 const searchBtn = document.getElementById("search_btn");
+const videoGrid = document.getElementById("video-grid");
 
 /* Application State */
 let isLoading = true;
 const videos = [];
 
 /* SEARCH */
+searchInput.focus();
 function searchVideos(query){
     return videos.filter(
     video => video.title.toLowerCase().includes(query.toLowerCase())
@@ -34,6 +36,15 @@ function handleSearch(){
 /* EVENT LISTENERS */
 searchBtn.addEventListener("click", handleSearch);
 menuBtn.addEventListener("click", toggleSidebar);
+videoGrid.addEventListener("click",(event) => {
+    const card = event.target.closest(".video-card");
+
+    if (!card){
+        return;
+    }
+
+    console.log("Video Card clicked!");
+});
 
 
 /* INITIALIZATION */
