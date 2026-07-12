@@ -14,7 +14,6 @@ let isLoading = true;
 const videos = [];
 
 /* SEARCH */
-searchInput.focus();
 function searchVideos(query){
     return videos.filter(
     video => video.title.toLowerCase().includes(query.toLowerCase())
