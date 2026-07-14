@@ -1,0 +1,97 @@
+*{
+    box-sizing: border-box;   
+}
+
+body{
+    background-color: black;
+    font-family: "JetBrains Mono", monospace;
+}
+
+header {
+    background-color: rgb(47, 47, 47);
+    display: flex;
+    align-items: center;
+    height: 30px;
+    margin: 0px;
+}
+
+header .left{
+    margin-left: 10px;
+    width: 20%;
+}
+
+header .left:hover{
+    cursor: default;
+}
+
+header .left button{
+    border: none;
+    height: 10px;
+    width: 10px;
+    border-radius: 50%;
+    margin-left: 2px;
+}
+
+header .left .b1{
+    background-color: red;
+}
+
+header .left .b2{
+    background-color: green;
+}
+
+header .left .b3{
+    background-color: blue;
+}
+
+header .left button{
+    opacity: 0.8;
+}
+
+header .left button:hover{
+    opacity: 1;
+}
+
+header .middle{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+header .middle p{
+    color: green;
+}
+
+.prompt-space{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    height: 20px;
+    margin: 10px 0px;
+}
+
+.prompt-space p{
+    color: green;
+}
+
+.prompt-space input{
+    background-color: black;
+    border: none;
+    font: inherit;
+    color: white;
+    margin-left: 5px;
+}
+
+.prompt-space input:focus{
+    border: none;
+    outline: none;
+    font: inherit;
+}
+
+.output{
+    color: white;
+    white-space: pre-wrap;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
