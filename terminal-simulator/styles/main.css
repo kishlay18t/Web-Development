@@ -80,6 +80,7 @@ header .middle p{
     font: inherit;
     color: white;
     margin-left: 5px;
+    flex: 1;
 }
 
 .prompt-space input:focus{
