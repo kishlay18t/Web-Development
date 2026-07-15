@@ -2,14 +2,19 @@
 import { handleFormSubmission } from "./terminal/terminal.js";
 
 // DOM REFERENCES
-const prompt_form = document.getElementById(`prompt-form`);
-const prompt_input = document.getElementById("prompt-input");
+const terminalInterface = document.getElementById(`terminal-interface`);
+const initialPromptInput = document.getElementById("prompt-input");
 
 // EVENT LISTENERS
-prompt_form.addEventListener("submit", handleFormSubmission);
+terminalInterface.addEventListener("submit", (e) => {
+    if (e.target.matches(".prompt-space")){
+        handleFormSubmission(e);
+    }
+});
 
 // INITIALIZATION
 function initialize(){
-    prompt_input.focus();
-}
+    initialPromptInput.focus();
+};
+
 initialize();
