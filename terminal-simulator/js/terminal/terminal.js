@@ -1,10 +1,12 @@
-let formCount = 1;
+//VARIABLES
 let currentFormID = 1;
 
+// DOM REFERENCES
 const terminalInterface = document.getElementById("terminal-interface");
 
+//FUNCTIONS
 function lockPrompt(event){
-    const promptInput = document.querySelector(`#prompt-input[data-id="${currentFormID}"]`);
+    const promptInput = event.target.querySelector("input");
 
     event.preventDefault();
     promptInput.readOnly = true;
@@ -12,29 +14,34 @@ function lockPrompt(event){
 };
 
 function generateNewPrompt(){
-    terminalInterface.insertAdjacentHTML('beforeend',`
 
-        <form id="prompt-form" data-id="${currentFormID}" class="prompt-space">
-            <p>user@terminal-simulator ~ $</p>
-            <input id="prompt-input" data-id="${currentFormID}">
-        </form>
-    
-    ` );
+    const newPromptForm = document.createElement("form");
+    newPromptForm.dataset.id = currentFormID;
+    newPromptForm.classList.add("prompt-form");
+    newPromptForm.classList.add("prompt-space");
 
-    formCount += 1;
+    const para = document.createElement("p");
+    para.textContent = "user@terminal-simulator ~ $";
+    newPromptForm.appendChild(para);
+
+    const input = document.createElement("input");
+    input.classList.add("prompt-input");
+    input.dataset.id = currentFormID;
+    newPromptForm.appendChild(input);
+
+    terminalInterface.appendChild(newPromptForm);
+
+    return input;
 }
 
-function shiftPromptFocus(){
-    const newPromptInput = 
-        document.querySelector(`#prompt-input[data-id="${currentFormID}"]`);
-
-    newPromptInput.focus();
+function shiftPromptFocus(promptInput){
+    promptInput.focus();
 }
 
 function handleFormSubmission(event){
     lockPrompt(event);
-    generateNewPrompt();
-    shiftPromptFocus();
+    const newPromptInput = generateNewPrompt();
+    shiftPromptFocus(newPromptInput);
 };
 
-export { handleFormSubmission };
+export { handleFormSubmission }; 

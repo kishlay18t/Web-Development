@@ -3,7 +3,7 @@ import { handleFormSubmission } from "./terminal/terminal.js";
 
 // DOM REFERENCES
 const terminalInterface = document.getElementById(`terminal-interface`);
-const initialPromptInput = document.getElementById("prompt-input");
+const initialPromptInput = document.getElementsByClassName("prompt-input");
 
 // EVENT LISTENERS
 terminalInterface.addEventListener("submit", (e) => {
