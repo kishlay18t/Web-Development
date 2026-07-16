@@ -22,7 +22,12 @@ let fileSystem = {
                                 {
                                     filename: "notes.txt",
                                     type: "text file",
-                                    children: undefined
+                                    children: []
+                                },
+                                {
+                                    filename: "ITR Files",
+                                    type: "directory",
+                                    children: []
                                 }
                             ]
                         }
@@ -32,3 +37,20 @@ let fileSystem = {
         }
     ]
 };
+
+function addReference(node, parent){
+    node.parent = parent;
+
+    // if (!node.children){
+    //     return;
+    // }
+
+    for ( const nodeChild of node.children ){
+        addReference(nodeChild, node)
+    }
+}
+
+addReference(fileSystem, null);
+
+let currentDirectory = fileSystem.children[0].children[0]; //user directory
+console.log(currentDirectory.parent.filename);
