@@ -1,4 +1,5 @@
 import { ls } from "../commands/ls.js";
+import { cd } from "../commands/cd.js";
 import { commands } from "../parser/parser.js";
 import { display } from "./terminal.js";
 

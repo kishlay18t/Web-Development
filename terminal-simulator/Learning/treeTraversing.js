@@ -33,13 +33,19 @@ let fileSystem = {
     ]
 };
 
+const toFind = "downloads";
+function findFilePath(node, fileArray, target){
+    fileArray.push(node.filename);
+    if (node.filename === target){
+        return fileArray;
+    }
 
-let currentDirectory = fileSystem.children[0].children[0]; //user directory
-function setCurrentDirectory(directory){
-    currentDirectory = directory;
-}
-function getCurrentDirectory(){
-    return currentDirectory;
+    const children = node.children;
+
+    for (const child of children){
+        return findFilePath(child, fileArray, target);
+    }
 }
 
-export { fileSystem, getCurrentDirectory, setCurrentDirectory };
+const filePath = findFilePath(fileSystem, [], "downloads").slice(1).join("/");
+console.log(filePath);

@@ -1,12 +1,11 @@
-import { currentDirectory } from "../storage/storage.js";
-
+import { getCurrentDirectory, setCurrentDirectory, fileSystem } from "../storage/storage.js";
 function ls(inputArray){
     if (inputArray.length !== 1){
         const error= "Invalid Command Argument";
         return  error;
     }
 
-    const output = currentDirectory.children.map((child) => {
+    const output = getCurrentDirectory().children.map((child) => {
     return child.filename;
     });
 

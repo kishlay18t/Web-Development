@@ -1,5 +1,9 @@
+import { setCurrentDirectory, getCurrentDirectory, fileSystem } from "../storage/storage.js";
+import { findFilePath } from "../filesystem/filesystem.js";
+
 //VARIABLES
 let currentFormID = 1;
+let filePath = [];
 
 // DOM REFERENCES
 const terminalInterface = document.getElementById("terminal-interface");
@@ -15,6 +19,7 @@ function lockPrompt(event){
 
 // Form Input Handling
 function generateNewPrompt(){
+    const currentDirectory = getCurrentDirectory();
 
     const newPromptForm = document.createElement("form");
     newPromptForm.dataset.id = currentFormID;
@@ -23,15 +28,17 @@ function generateNewPrompt(){
 
     const para = document.createElement("p");
     para.textContent = "user@terminal-simulator ~ $";
-    newPromptForm.appendChild(para);
 
     const input = document.createElement("input");
     input.classList.add("prompt-input");
     input.dataset.id = currentFormID;
+
+    if (currentDirectory.filename !== "user"){
+        updateDirectory(para);
+    }
+    newPromptForm.appendChild(para);
     newPromptForm.appendChild(input);
-
     terminalInterface.appendChild(newPromptForm);
-
     return input;
 }
 
@@ -53,6 +60,13 @@ function display(outputStr){
     outputDiv.textContent = outputStr;
 
     terminalInterface.appendChild(outputDiv)
+}
+
+function updateDirectory(para){
+
+    const currentDirectory = getCurrentDirectory();
+    const filePath = findFilePath(fileSystem, [], currentDirectory.filename).slice(1).join("/");
+    para.textContent = `user@terminal-simulator /${filePath} ~ $`;
 }
 
 // EXPORTS

@@ -1,3 +1,4 @@
+import { cd } from "../commands/cd.js";
 import { ls } from "../commands/ls.js";
 
 function parseInput(input){
@@ -5,7 +6,8 @@ function parseInput(input){
 }
 
 const commands = {
-    ls
+    ls,
+    cd
 };
 
 export { parseInput, commands };
