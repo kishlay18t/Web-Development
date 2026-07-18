@@ -22,7 +22,7 @@ let fileSystem = {
                                 {
                                     filename: "notes.txt",
                                     type: "text file",
-                                    children: undefined
+                                    children: []
                                 }
                             ]
                         }
@@ -32,3 +32,8 @@ let fileSystem = {
         }
     ]
 };
+
+
+let currentDirectory = fileSystem.children[0].children[0]; //user directory
+
+export { fileSystem, currentDirectory };

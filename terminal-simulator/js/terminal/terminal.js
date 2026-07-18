@@ -13,6 +13,7 @@ function lockPrompt(event){
     currentFormID++;
 };
 
+// Form Input Handling
 function generateNewPrompt(){
 
     const newPromptForm = document.createElement("form");
@@ -44,4 +45,15 @@ function handleFormSubmission(event){
     shiftPromptFocus(newPromptInput);
 };
 
-export { handleFormSubmission }; 
+// Form Output 
+
+function display(outputStr){
+    const outputDiv = document.createElement("div");
+    outputDiv.classList.add("output");
+    outputDiv.textContent = outputStr;
+
+    terminalInterface.appendChild(outputDiv)
+}
+
+// EXPORTS
+export { handleFormSubmission, display }; 
