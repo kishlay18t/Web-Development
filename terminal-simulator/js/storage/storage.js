@@ -52,4 +52,8 @@ function addNewFile(file){
     currentDirectory.children.push(file);
 }
 
-export { fileSystem, getCurrentDirectory, setCurrentDirectory, addNewDirectory, addNewFile };
+function remove(filename){
+    currentDirectory.children = currentDirectory.children.filter((child) => child.filename !== filename);
+}
+
+export { fileSystem, getCurrentDirectory, setCurrentDirectory, addNewDirectory, addNewFile, remove };

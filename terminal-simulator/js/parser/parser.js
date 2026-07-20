@@ -4,6 +4,7 @@ import { echo } from "../commands/echo.js";
 import { ls } from "../commands/ls.js";
 import { mkdir } from "../commands/mkdir.js";
 import { pwd } from "../commands/pwd.js";
+import { rm } from "../commands/rm.js";
 import { touch } from "../commands/touch.js";
 
 function parseInput(input){
@@ -17,7 +18,8 @@ const commands = {
     mkdir,
     touch,
     echo,
-    cat
+    cat,
+    rm
 };
 
 export { parseInput, commands };
