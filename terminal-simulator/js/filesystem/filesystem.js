@@ -1,14 +1,20 @@
-function findFilePath(node, fileArray, target){
-    fileArray.push(node.filename);
-    if (node.filename === target){
-        return fileArray;
+
+function findFilePath(node, filePathArray){
+
+    filePathArray.push(node.filename);
+    if (node.filename === "root"){
+        return filePathArray; 
     }
 
-    const children = node.children;
-
-    for (const child of children){
-        return findFilePath(child, fileArray, target);
-    }
+    return findFilePath(node.parent, filePathArray);
 }
 
-export { findFilePath };
+
+
+function getFilePath(currentDirectory){
+    const filePath = findFilePath(currentDirectory , []);
+
+    return filePath.reverse().join("/");
+}
+
+export { getFilePath };

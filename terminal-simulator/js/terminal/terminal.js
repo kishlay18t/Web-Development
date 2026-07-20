@@ -1,5 +1,5 @@
 import { setCurrentDirectory, getCurrentDirectory, fileSystem } from "../storage/storage.js";
-import { findFilePath } from "../filesystem/filesystem.js";
+import { getFilePath } from "../filesystem/filesystem.js";
 
 //VARIABLES
 let currentFormID = 1;
@@ -65,7 +65,12 @@ function display(outputStr){
 function updateDirectory(para){
 
     const currentDirectory = getCurrentDirectory();
-    const filePath = findFilePath(fileSystem, [], currentDirectory.filename).slice(1).join("/");
+    let filePath = getFilePath(currentDirectory);
+
+    let fileArray = filePath.split("/").slice(1);
+    filePath = fileArray.join("/");
+
+    console.log("File Path: " + filePath);
     para.textContent = `user@terminal-simulator /${filePath} ~ $`;
 }
 

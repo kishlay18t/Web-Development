@@ -20,6 +20,10 @@ function cdForward(name){
 
 function cdBackwards(){
     const currentDirectory = getCurrentDirectory();
+    if (currentDirectory.filename === "root"){
+        return "Invalid Argument!";
+    }
+
     setCurrentDirectory(currentDirectory.parent);
     return "";
 }
@@ -44,4 +48,4 @@ function cd(inputArray){
 
 }
 
-export { cd, validateArgument };
+export { cd, validateFilename };
