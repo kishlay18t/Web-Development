@@ -22,7 +22,8 @@ let fileSystem = {
                                 {
                                     filename: "notes.txt",
                                     type: "text file",
-                                    children: []
+                                    children: [],
+                                    content: ""
                                 }
                             ]
                         }
@@ -47,4 +48,8 @@ function addNewDirectory(directory){
     currentDirectory.children.push(directory);
 }
 
-export { fileSystem, getCurrentDirectory, setCurrentDirectory, addNewDirectory };
+function addNewFile(file){
+    currentDirectory.children.push(file);
+}
+
+export { fileSystem, getCurrentDirectory, setCurrentDirectory, addNewDirectory, addNewFile };
