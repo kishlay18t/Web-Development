@@ -1,5 +1,6 @@
 import { cd } from "../commands/cd.js";
 import { ls } from "../commands/ls.js";
+import { mkdir } from "../commands/mkdir.js";
 import { pwd } from "../commands/pwd.js";
 
 function parseInput(input){
@@ -9,7 +10,8 @@ function parseInput(input){
 const commands = {
     ls,
     cd, 
-    pwd
+    pwd,
+    mkdir
 };
 
 export { parseInput, commands };

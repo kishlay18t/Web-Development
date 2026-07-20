@@ -1,6 +1,7 @@
 import { ls } from "../commands/ls.js";
 import { cd } from "../commands/cd.js";
 import { pwd } from "../commands/pwd.js";
+import { mkdir } from "../commands/mkdir.js";
 import { commands } from "../parser/parser.js";
 import { display } from "./terminal.js";
 

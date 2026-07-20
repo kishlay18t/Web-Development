@@ -38,8 +38,13 @@ let currentDirectory = fileSystem.children[0].children[0]; //user directory
 function setCurrentDirectory(directory){
     currentDirectory = directory;
 }
+
 function getCurrentDirectory(){
     return currentDirectory;
 }
 
-export { fileSystem, getCurrentDirectory, setCurrentDirectory };
+function addNewDirectory(directory){
+    currentDirectory.children.push(directory);
+}
+
+export { fileSystem, getCurrentDirectory, setCurrentDirectory, addNewDirectory };

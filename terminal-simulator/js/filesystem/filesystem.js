@@ -1,4 +1,3 @@
-
 function findFilePath(node, filePathArray){
 
     filePathArray.push(node.filename);
