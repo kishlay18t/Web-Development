@@ -55,23 +55,23 @@ const server = http.createServer((req, res) => {
         return;
     }
 
-            if (req.url === "/api/video" && req.method === "POST"){
-                
-                let body = "";
-                req.on("data", (chunk) => {
-                    body += chunk;
-                });
+    if (req.url === "/api/video" && req.method === "POST"){
+        
+        let body = "";
+        req.on("data", (chunk) => {
+            body += chunk;
+        });
 
-                req.on("end", () =>{
-                    const parsedBody = JSON.parse(body);
-                    videos.push(parsedBody)
+        req.on("end", () =>{
+            const parsedBody = JSON.parse(body);
+            videos.push(parsedBody)
 
-                    res.statusCode = 201;
-                    res.end("Video Submitted");
-                })
+            res.statusCode = 201;
+            res.end("Video Submitted");
+        })
 
-                return;
-            }
+        return;
+    }
 
     if (req.url === "/"){
         res.setHeader("content-type", "text/html");
