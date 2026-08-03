@@ -40,16 +40,6 @@ app.get("/video-forum", (req, res) => {
     res.sendFile(path.join(__dirname, "views", "create-post.html"));
 });
 
-// app.get("/script.js", (req, res) =>{
-//     res.setHeader("Content-type", "application/javascript");
-//     res.send(script);
-// })
-
-// app.get("/style.css", (req, res) =>{
-//     res.setHeader("Content-type", "text/css");
-//     res.send(style);
-// });
-
 app.get("/api/video", (req, res) =>{
     res.json(videos);
 });
