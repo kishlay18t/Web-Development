@@ -31,6 +31,6 @@ async function handlePostSubmission(event){
         body: JSON.stringify(dataObj)
     };
 
-    await fetch("http://localhost:3000/api/video", data);
+    await fetch("http://localhost:3000/api/post", data);
     window.location.href = "/";
 } 

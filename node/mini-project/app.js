@@ -51,10 +51,18 @@ app.get("/api/post", (req, res) =>{
 
 app.get("/api/post/:id", (req, res) => {
 
-    const id = req.params.id;
-    const requestedPost = posts.filter((post) => post.id === id);
-    console.log(requestedPost);
-    res.send(requestedPost);
+    const id = Number(req.params.id);
+    const requestedPost = posts.filter((post) => {
+        return post.id === id;
+    });
+
+    if (requestedPost.length === 0){
+        res.status(404).json({
+            message: "Post not found!"
+        });
+    }
+    
+    res.json(requestedPost);
 });
 
 app.post("/api/post", (req, res) => {

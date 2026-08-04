@@ -1,7 +1,7 @@
 const forum = document.getElementById("post-forum");
 
 async function getPost(){
-    const response = await fetch("http://localhost:3000/api/video");
+    const response = await fetch("http://localhost:3000/api/post");
 
     if (!response.ok){
         throw new Error(
