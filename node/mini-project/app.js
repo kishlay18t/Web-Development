@@ -7,7 +7,7 @@ const { parse } = require("path");
 const path = require("path");
 
 
-const videos = [
+const posts = [
     {
         id: 1,
         title: "Learn Node.js",
@@ -30,19 +30,41 @@ const videos = [
 
 app.use(express.static("views"));
 app.use(express.static("public"));
+app.use(express.json());
 
+app.use((req, res, next) => {
+    console.log("Middleware 1");
+    next();
+});
 
 app.get("/", (req, res) => {
     res.sendFile(path.join(__dirname, "views", "index.html"));
 });
 
-app.get("/video-forum", (req, res) => {
+app.get("/post-forum", (req, res) => {
     res.sendFile(path.join(__dirname, "views", "create-post.html"));
 });
 
-app.get("/api/video", (req, res) =>{
-    res.json(videos);
+app.get("/api/post", (req, res) =>{
+    res.json(posts);
 });
+
+app.get("/api/post/:id", (req, res) => {
+
+    const id = req.params.id;
+    const requestedPost = posts.filter((post) => post.id === id);
+    console.log(requestedPost);
+    res.send(requestedPost);
+});
+
+app.post("/api/post", (req, res) => {
+    posts.push(req.body);
+    res.status(201).json({
+        message: "Post Created"
+    });
+});
+
+
 
 app.listen(3000, () =>{
     console.log("Server is listening on port: 3000");
