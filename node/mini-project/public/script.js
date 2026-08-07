@@ -18,6 +18,18 @@ function displayError(error){
     forum.innerHTML = error;
 }
 
+async function deletePost(id){
+    console.log("Delete function executed");
+    const url = `/api/post/${id}`;
+    const data = {
+        method: "DELETE",
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    }
+
+    await fetch(url, data);
+}
 
 async function renderPosts(){
     try {
@@ -39,7 +51,14 @@ async function renderPosts(){
                     </div>
                     <div class="foot">
                         <p class="author">Author: ${channel}</p>
+
                         <p class="views">${views} views</p>
+
+                        <a href="/edit-forum/${id}"> 
+                            <button>Edit</button>
+                        </a>
+
+                        <button class="delete" data-id="${id}">Delete</button>
                     </div>
                     
                 </div>
@@ -53,5 +72,15 @@ async function renderPosts(){
         displayError(error);
     }
 }
+
+forum.addEventListener("click", async function (event){
+    if (event.target.classList.contains("delete")){
+        const id = event.target.dataset.id;
+
+        await deletePost(id);
+        forum.innerHTML = "";
+        renderPosts();
+    }
+});
 
 renderPosts();

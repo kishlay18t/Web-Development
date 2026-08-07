@@ -55,3 +55,24 @@ a{
     margin-top: 5px;
     margin-bottom: 0;
 }
+
+.post button{
+    width: 100px;
+    height: 30px;
+    font-family: inherit;
+    font-weight: bold;
+    border: none;
+    background-color: black;
+    color: white;
+    padding: 5px 0px;
+    padding-bottom: 15px;
+    vertical-align: middle;
+    margin-bottom: 5px;
+}
+
+.post a{
+    color: white;
+    font-style: none;
+    font-family: inherit;
+    margin-top: 5px;
+}
