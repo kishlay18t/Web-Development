@@ -1,0 +1,55 @@
+*{
+    box-sizing: border-box;
+}
+
+main{
+    display: flex;
+    justify-content: center;
+    font-family: "JetBrains Mono", monospace;
+}
+
+.edit-post-form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 2px black solid;
+    margin: 100px;
+    padding: 30px;
+    width: 400px;
+    height: 480px;
+    position: absolute;
+    background-color: white;
+    box-shadow: 2px;
+}
+
+.edit-post-form input{
+    border: 1px solid black;
+    padding: 8px 8px;
+    margin-top: 0px;
+    margin-bottom: 20px;
+    width: 350px;
+    font-family: inherit;
+}
+
+.edit-post-form input:focus{
+    outline: 1px solid black;
+
+}
+
+.edit-post-form p{
+    margin: 0px;
+}
+
+.edit-post-form button{
+    margin-top: 20px;
+    width: 100px;
+    height: 30px;
+    font-family: inherit;
+    font-weight: bold;
+    border: none;
+    background-color: black;
+    color: white;
+    padding: 5px 0px;
+    padding-bottom: 15px;
+    vertical-align: middle;
+}
