@@ -1,61 +1,55 @@
 // "/api/post" Routers.
 const express = require("express");
 const router = express.Router();
+const { Pool } = require("pg");
 
-// Posts Array.
-let posts = [
-    {
-        id: 1,
-        title: "Learn Node.js",
-        channel: "Kishu",
-        views: "12K"
-    },
-    {
-        id: 2,
-        title: "Express Basics",
-        channel: "Kishu",
-        views: "30K"
-    },
-    {
-        id: 3,
-        title: "JavaScript Arrays",
-        channel: "Kishu",
-        views: "18K"
-    }
-];
+// Creating a connection to database
+const pool = new Pool({
+    user: "postgres",
+    host: "localhost",
+    database: "posts_db",
+    password: "Kmp180926@",
+    port: 5432
+});
 
 // DELETE Post
 router.delete("/:id", (req, res) => {
     const id = Number(req.params.id);
 
-    const newPosts = posts.filter((post) => post.id !== id);
-    posts = [...newPosts];
+    await pool.query(`
+        DELETE
+        FROM posts
+        WHERE id = $1`, [ id ]);
 
-    res.status(204).json({
+    res.status(200).json({
         message: "Post deleted successfully!"
     });
 });
 
 // GET -- All posts
-router.get("/", (req, res) =>{
-    res.json(posts);
+router.get("/", async (req, res) =>{
+
+    const result = await pool.query("SELECT * FROM posts");
+
+    res.json(result.rows);
 });
 
 // GET -- Specific Post data
-router.get("/:id", (req, res) => {
-
+router.get("/:id", async (req, res) => {
     const id = Number(req.params.id);
-    const requestedPost = posts.filter((post) => {
-        return post.id === id;
-    });
+    const reqPost = await pool.query(`
+        SELECT * 
+        FROM posts
+        WHERE id = $1`
+        , [id]);
 
-    if (requestedPost.length === 0){
+    if (reqPost.rows.length === 0){
         res.status(404).json({
-            message: "Post not found!"
+            message: "Post not found"
         });
     }
-    
-    res.json(requestedPost[0]);
+
+    res.json(reqPost.rows[0]);
 });
 
 // POST -- New Post
@@ -63,8 +57,13 @@ router.post("/", (req, res) => {
     const newPost = req.body;
     newPost.id = Number(newPost.id);
     
-    posts.push(newPost);
-    
+    const { id, title, channel, views } = newPost;
+    const result = await pool.query(`
+        INSERT INTO posts (id, title, channel, views)
+        VALUES ($1, $2, $3, $4)`
+
+    , [id, title, channel, views] );
+
     res.status(201).json({
         message: "Post Created"
     });
@@ -72,22 +71,21 @@ router.post("/", (req, res) => {
 
 // Edit Post -- PUT request.
 router.put("/:id", (req, res) =>{
-    const id = Number(req.params.id);
-    let post = posts.find((post) => post.id === id);
-    const edit = req.body;
 
-    if (!post){
-        res.status(404).json({
-            message: "HTTP Error 404: Requested ID not found"
-        });
+    const queryId = Number(req.params.id);
+    const { id, title, channel, views } = req.body;
 
-        return;
-    }
+    await pool.query(`
+        UPDATE posts
+        SET id = $1,
+            title = '$2',
+            channel = '$3',
+            views = '$4'
+        WHERE id = $5;
+    `, [id, title, channel, views, queryId ]);
+    
 
-    Object.assign(post, edit);
-    post.id = Number(edit.id);
-
-    res.status(201).json({
+    res.status(200).json({
         message: "Post Updated Successfully!"
     });
 });
