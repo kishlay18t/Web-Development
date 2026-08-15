@@ -1,0 +1,5 @@
+$kind: http-request
+name: GET Home Page
+method: GET
+url: 'http://localhost:3000/'
+order: 1000

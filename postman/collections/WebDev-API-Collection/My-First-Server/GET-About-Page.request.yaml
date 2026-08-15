@@ -1,0 +1,5 @@
+$kind: http-request
+name: GET About Page
+method: GET
+url: 'http://localhost:3000/about'
+order: 2000

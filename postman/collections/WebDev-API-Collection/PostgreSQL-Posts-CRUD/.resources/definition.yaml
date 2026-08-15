@@ -1,0 +1,3 @@
+$kind: collection
+name: PostgreSQL Posts CRUD
+description: Express.js REST API backed by PostgreSQL (postgreSQL/posts-crud) on port 3000

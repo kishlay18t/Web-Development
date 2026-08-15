@@ -1,0 +1,3 @@
+$kind: collection
+name: Mini Project - Posts API
+description: Express.js REST API with in-memory posts store (node/mini-project) on port 3000

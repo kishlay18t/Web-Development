@@ -1,0 +1,5 @@
+$kind: http-request
+name: GET Profile Page
+method: GET
+url: 'http://localhost:3000/profile'
+order: 3000

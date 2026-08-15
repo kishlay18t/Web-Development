@@ -1,0 +1,5 @@
+$kind: http-request
+name: GET All Posts
+method: GET
+url: 'http://localhost:3000/api/post'
+order: 1000

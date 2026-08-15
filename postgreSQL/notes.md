@@ -17,3 +17,45 @@ const pool = new Pool({
     port: 5432
 });
 ```
+
+# Query Database
+
+```JS
+async function testDb(){
+    const result = await pool.query("Query string");
+}
+```
+
+`result` comes in several parts:
+- .command = Which command used in query ('SELECT')
+- .rowCount = number of rows
+- .rows = Actual array with elements full of table rows.
+- .fields = What fields are in the keys of all rows and their information
+
+# Protect from SQL Injections
+Use parameterized queries when user input enters queries
+
+DONT
+```JS
+const result = await pool.query(
+    `SELECT * FROM posts WHERE id = ${id}`
+);
+```
+
+INSTEAD
+```JS
+const result = await pool.query(
+    "SELECT * FROM posts WHERE id = $1",
+    [id]
+);
+```
+
+# SQL Keywords
+
+- SELECT
+- FROM
+- WHERE
+- INSERT
+- UPDATE
+- DELETE
+- CREATE TABLE

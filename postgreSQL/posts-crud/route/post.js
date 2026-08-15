@@ -13,7 +13,7 @@ const pool = new Pool({
 });
 
 // DELETE Post
-router.delete("/:id", (req, res) => {
+router.delete("/:id",async (req, res) => {
     const id = Number(req.params.id);
 
     await pool.query(`
@@ -49,11 +49,11 @@ router.get("/:id", async (req, res) => {
         });
     }
 
-    res.json(reqPost.rows[0]);
+    res.json(reqPost.rows);
 });
 
 // POST -- New Post
-router.post("/", (req, res) => {
+router.post("/", async (req, res) => {
     const newPost = req.body;
     newPost.id = Number(newPost.id);
     
@@ -70,7 +70,7 @@ router.post("/", (req, res) => {
 });
 
 // Edit Post -- PUT request.
-router.put("/:id", (req, res) =>{
+router.put("/:id",async (req, res) =>{
 
     const queryId = Number(req.params.id);
     const { id, title, channel, views } = req.body;
@@ -78,9 +78,9 @@ router.put("/:id", (req, res) =>{
     await pool.query(`
         UPDATE posts
         SET id = $1,
-            title = '$2',
-            channel = '$3',
-            views = '$4'
+            title = $2,
+            channel = $3,
+            views = $4
         WHERE id = $5;
     `, [id, title, channel, views, queryId ]);
     

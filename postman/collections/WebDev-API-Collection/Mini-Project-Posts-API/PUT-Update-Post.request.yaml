@@ -1,0 +1,17 @@
+$kind: http-request
+name: PUT Update Post
+method: PUT
+url: 'http://localhost:3000/api/post/{{id}}'
+order: 4000
+headers:
+  - key: Content-Type
+    value: application/json
+body:
+  type: json
+  content: |-
+    {
+      "id": 1,
+      "title": "Updated Post",
+      "channel": "Kishu",
+      "views": "50K"
+    }

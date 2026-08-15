@@ -1,0 +1,17 @@
+$kind: http-request
+name: POST Create Post
+method: POST
+url: 'http://localhost:3000/api/post'
+order: 3000
+headers:
+  - key: Content-Type
+    value: application/json
+body:
+  type: json
+  content: |-
+    {
+      "id": 4,
+      "title": "New Post",
+      "channel": "Kishu",
+      "views": "0"
+    }
