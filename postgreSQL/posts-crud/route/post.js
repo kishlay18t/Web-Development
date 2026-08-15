@@ -2,13 +2,14 @@
 const express = require("express");
 const router = express.Router();
 const { Pool } = require("pg");
+require("dotenv").config();
 
 // Creating a connection to database
 const pool = new Pool({
-    user: "postgres",
-    host: "localhost",
-    database: "posts_db",
-    password: "Kmp180926@",
+    user: process.env.DB_USER,
+    host: process.env.DB_HOST,
+    database: process.env.DB_NAME,
+    password: process.env.DB_PASSWORD,
     port: 5432
 });
 
