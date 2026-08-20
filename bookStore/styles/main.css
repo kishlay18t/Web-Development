@@ -1,0 +1,301 @@
+*{
+    box-sizing: border-box;   
+}
+
+body{
+    top: 0;
+    left: 0;
+    font-family: "JetBrains Mono", monospace;
+    min-height: 100vh;
+    width: 100%;
+    margin: 0;
+}
+
+header .head{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 1px black solid;
+}
+
+header .head .logo{
+    width: 35px;
+    height: 35px;
+    background-color: black;
+    margin-right: 2%;
+    border-radius: 50%;
+}
+
+header .links{
+    display: flex;
+    justify-content: space-evenly;
+    border-bottom: 1px solid black;
+}
+
+header .links a{
+    color: black;
+    display: inline-block;
+    text-decoration: none;
+    text-align: center;
+    border: 1px black solid;
+    width: 100%;
+    padding: 5px 0px;
+    cursor: pointer;
+}
+
+main{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Home Page */
+.home-section{
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 30px 30px;
+}
+
+
+
+/* Login page */
+.login-section{
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+main .login-section div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+    height: 20px;
+}
+
+main .login-section div p{
+    margin-right: 10px;
+}
+
+main .login-section div input{
+    border: 1px solid black;
+    font-family: inherit;
+}
+
+main .login-section div input:focus{
+    outline: 1px solid black;
+    font-family: inherit;
+}
+
+main .login-section .buttons{
+    justify-content: space-evenly;
+}
+
+main .login-section .buttons button{
+    width: 85px;
+    height: 25px;
+    border: 1px solid black;
+    background-color: white;
+    /* box-shadow: 4px 4px 0px rgba(0,0,0,0.9); */
+    transition: 0.5s ease;
+}
+
+main .login-section .buttons button:hover{
+    box-shadow: 3px 3px 0px rgb(0,0,0,0.9);
+    transform: translate(-3px, -3px);
+    transition: 0.5s ease;
+}
+
+/* Catalogue Page */
+.catalogue-section{
+    display: none;
+    width: 100%;
+    min-height: 100vh;
+    height: inherit;
+}
+
+.left{
+    width: 149px;
+    flex-shrink: 0;
+}
+
+.catalogue-section ul{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    border-right: solid 1px black;
+    margin: 0px;
+    padding: 0px;
+    flex: 1;
+    background-color: rgb(220, 219, 219);
+    height: 100%;
+}
+
+.catalogue-section li{
+    list-style-type: none;
+    width: 100%;
+    padding: 10px 30px;
+    text-align: center;
+}
+
+.catalogue-section li a{
+    text-decoration: none;
+    color: black;
+}
+
+.catalogue-section table{
+    flex: 1;
+    width: auto;
+    table-layout: fixed;
+    text-align: center;
+    border-collapse: collapse;
+}
+
+.catalogue-section table td,
+.catalogue-section table th{
+    border: 1px black solid;
+}
+
+.catalogue-section table td{
+    padding-top: 5px;
+}
+
+.catalogue-section table th{
+    height: 40px;
+    border-top: none;
+}
+
+.catalogue-section table td img{
+    width: 150px;
+}
+
+.sl-no {
+    width: 10%;
+}
+
+.book {
+    width: 20%;
+}
+
+.details {
+    width: 40%;
+}
+
+.price {
+    width: 15%;
+}
+
+.cart {
+    width: 15%;
+}
+
+/* Cart Page */
+.cart-section{
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    min-height: 100%;
+}
+
+.cart-table{
+    flex: 1;
+    width: 100%;
+    table-layout: fixed;
+    text-align: center;
+    border-collapse: collapse;
+}
+
+.cart-table td,
+.cart-table th{
+    border: 2px solid black;
+}
+
+.cart-table td{
+    padding-top: 5px;
+    
+}
+
+.cart-table th{
+    height: 40px;
+}
+
+.book-name{
+    width: 40%;
+}
+
+.quantity{
+    width: 20%;
+}
+
+.amount{
+    width: 20%;
+}
+
+.price{
+    width: 20%;
+}
+
+/* Registration section */
+.registration-section{
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    border: 2px black solid;
+    margin: 20px 0px;
+    padding: 20px;
+    padding-top: 5px;
+    width: 80%;
+}
+
+.registration-section div{
+    display: flex;
+    margin-bottom: 20px;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.registration-section div p{
+    margin-right: 10px;
+}
+
+.registration-section div input{
+    font-family: inherit;
+    border: 1px solid black;
+    width: 80%;
+    height: 25px;
+}
+
+.registration-section div input:focus{
+    outline: none;
+    border: 1px solid black;
+    font-family: inherit;
+}
+
+.languages label{
+    margin-right: 20px;
+}
+
+.registration-section button{
+    width: 150px;
+    height: 25px;
+    border: 1px solid black;
+    background-color: white;
+    /* box-shadow: 4px 4px 0px rgba(0,0,0,0.9); */
+    transition: 0.5s ease;
+}
+
+.registration-section button:hover{
+    box-shadow: 3px 3px 0px rgb(0,0,0,0.9);
+    transform: translate(-3px, -3px);
+    transition: 0.5s ease;
+}
+
+/* All */
+.active{
+    display: flex;
+}

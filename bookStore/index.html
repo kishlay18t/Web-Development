@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Lloyd BookStore</title>
+    <link rel="stylesheet" href="./styles/main.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <header>
+        <div class="head">
+            <div class="logo"></div>
+            <h1 class="website-name">LLOYD BookStore</h1>
+        </div>
+        <section class="links" id="nav-bar">
+            <a class="home-nav">Home</a>
+            <a class="login-nav">Login</a>
+            <a class="registration-nav">Registration</a>
+            <a class="catalogue-nav">Catalogue</a>
+            <a class="cart-nav">Cart</a>
+        </section>
+    </header>
+
+    <main>
+        <div id="home" class="home-section active">
+            <h1>Welcome to our Online Bookstore!</h1>
+            <p>Explore a wide collection of books across different categories and discover something new to read. 
+                Browse our catalogue, view book details and prices, and add your favorite books to the shopping cart. 
+                Register with us to enjoy a simple and convenient online book-shopping experience.
+            </p>
+        </div>
+        
+        <div id="login" class="login-section">
+            <h1>Login</h1>
+            <form>
+                <div class="username">
+                    <p>Username</p>
+                    <input type="text" placeholder="Enter the Username">
+                </div>
+
+                <div class="password">
+                    <p>Password</p>
+                    <input type="text" placeholder="Enter the Password">
+                </div>
+
+                <div class="buttons">
+                    <button>Submit</button>
+                    <button>Reset</button>
+                </div>
+                
+            </form>
+        </div>
+
+        <div id="catalogue" class="catalogue-section">
+            <div class="left">
+                <ul class="branch-list">
+                    <li><a href="#">CSE</a></li>
+                    <li><a href="#">ECE</a></li>
+                    <li><a href="#">EEE</a></li>
+                    <li><a href="#">CIVIL</a></li>
+                </ul>
+            </div>
+
+            <table class="catalogue-table">
+                <colgroup>
+                    <col class="sl-no">
+                    <col class="book">
+                    <col class="details">
+                    <col class="price">
+                    <col class="cart">
+                </colgroup>
+
+
+                <tr>
+                    <th>Sl. No.</th>
+                    <th>Book</th>
+                    <th>Details</th>
+                    <th>Price</th>
+                    <th>Cart</th>
+                </tr>
+
+                <tr>
+                    <td>1</td>
+                    <td>
+                        <img src="./book-cover/xmlbible.jpg">
+                    </td>
+                    <td>
+                        <p>Book: XML Bible</p>
+                        <p>Author: Winston</p>
+                        <p>Publication: Wiely</p>
+                    </td>
+                    <td>$43.5</td>
+                    <td>
+                        <button>Add to cart</button>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>1</td>
+                    <td>
+                        <img src="./book-cover/xmlbible.jpg">
+                    </td>
+                    <td>
+                        <p>Book: XML Bible</p>
+                        <p>Author: Winston</p>
+                        <p>Publication: Wiely</p>
+                    </td>
+                    <td>$43.5</td>
+                    <td>
+                        <button>Add to cart</button>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>1</td>
+                    <td>
+                        <img src="./book-cover/xmlbible.jpg">
+                    </td>
+                    <td>
+                        <p>Book: XML Bible</p>
+                        <p>Author: Winston</p>
+                        <p>Publication: Wiely</p>
+                    </td>
+                    <td>$43.5</td>
+                    <td>
+                        <button>Add to cart</button>
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+        <div id="cart" class="cart-section">
+            <h1>Cart</h1>
+            <table class="cart-table">
+
+                <colgroup>
+                    <col class="book-name">
+                    <col class="price">
+                    <col class="quantity">
+                    <col class="amount">
+                </colgroup>
+
+                <tr>
+                    <th>Book Name</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                    <th>Amount</th>
+                </tr>
+
+                <tr>
+                    <td>XML Bible</td>
+                    <td>$35.5</td>
+                    <td>2</td>
+                    <td>$71</td>
+                </tr>
+
+                <tr>
+                    <td>XML Bible</td>
+                    <td>$35.5</td>
+                    <td>2</td>
+                    <td>$71</td>
+                </tr>
+
+                <tr>
+                    <td>XML Bible</td>
+                    <td>$35.5</td>
+                    <td>2</td>
+                    <td>$71</td>
+                </tr>
+
+            </table>
+        </div>
+        
+        <div id="registration" class="registration-section">
+            <h1>Register Now!</h1>
+            <form id="registration-form">
+                <div class="username">
+                    <p>Name</p>
+                    <input type="text" placeholder="e.g.: FirstName LastName">
+                </div>
+                
+                <div class="password">
+                    <p>Password</p>
+                    <input type="password" placeholder="Enter your password">
+                </div>
+                
+                <div class="email">
+                    <p>E-Mail ID</p>
+                    <input type="text" placeholder="e.g. anymail@gmail.com">
+                </div>
+
+                <div class="ph-num">
+                    <p>Phone Number</p>
+                    <input type="text" placeholder="Enter your phone number">
+                </div>
+
+                <div class="gender">
+
+                    <p>Sex (M/F/Others)</p>
+                    <input name="sex" type="radio" value="male" id="male">
+                    <label for="male">Male</label> 
+
+                    <input name="sex" type="radio" value="female" id="female">
+                    <label for="female">Female</label>
+
+                    <input name="sex" type="radio" value="others" id="others">
+                    <label for="others">Others</label>
+
+                </div>
+                
+                <div class="dob">
+
+                    <p>Date of Birth</p>
+
+                    <select name="day" id="day">
+                        <option>Day</option>
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                        <option>6</option>
+                        <option>7</option>
+                        <option>8</option>
+                    </select>
+
+                    <select name="month" id="month">
+                        <option value="">Month</option>
+                        <option value="january">January</option>
+                        <option value="february">February</option>
+                        <option value="march">March</option>
+                        <option value="april">April</option>
+                        <option value="may">May</option>
+                        <option value="june">June</option>
+                        <option value="july">July</option>
+                        <option value="august">August</option>
+                        <option value="september">September</option>
+                        <option value="october">October</option>
+                        <option value="november">November</option>
+                        <option value="december">December</option>
+                    </select>
+
+                    <select name="year" id="year">
+                        <option>Year</option>
+                        <option>2000</option>
+                        <option>2001</option>
+                        <option>2002</option>
+                        <option>2003</option>
+                        <option>2004</option>
+                        <option>2005</option>
+                        <option>2006</option>
+                        <option>2007</option>
+                    </select>
+
+                </div>
+                
+                <div class="languages">
+                    <p>Known Languages</p>
+                    <input type="checkbox" value="hindi" name="hindi">
+                    <label for="hindi">Hindi</label>
+
+                    <input type="checkbox" value="english" name="english">
+                    <label for="english">English</label>
+
+                    <input type="checkbox" value="tamil" name="tamil">
+                    <label for="tamil">Tamil</label>
+
+                    <input type="checkbox" value="telugu" name="telugu">
+                    <label for="telugu">Telugu</label>
+                    
+                </div>
+
+                <div class="address">
+                    <p>Address</p>
+                    <input type="text" placeholder="Enter your address">
+                </div>
+
+                <button>Submit</button>
+            </form>
+                
+        </div>
+    </main>
+
+    <script src="./js/main.js" type="module"></script>
+</body>
+
+</html>
