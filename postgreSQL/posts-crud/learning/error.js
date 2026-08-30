@@ -16,7 +16,12 @@ app.use((req,res,next) => {
 });
 
 app.use((err, req, res, next) => {
-    console.error(err);
+    console.error("1st Error Handler");
+    next(err);
+});
+
+app.use((err, req, res, next) => {
+    console.log("2nd Error Handler");
     res.status(500).send(err.message);
 });
 

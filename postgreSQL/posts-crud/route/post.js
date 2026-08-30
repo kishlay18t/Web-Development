@@ -36,21 +36,19 @@ router.get("/", async (req, res) =>{
 });
 
 // GET -- Specific Post data
-router.get("/:id", async (req, res) => {
-    const id = Number(req.params.id);
-    const reqPost = await pool.query(`
-        SELECT * 
-        FROM posts
-        WHERE id = $1`
-        , [id]);
+router.get("/:id", async (req, res, next) => {
+        const id = Number(req.params.id);
+        const reqPost = await pool.query(`
+            SELECT * 
+            FROM posts
+            WHERE id = $1`
+            , [id]);
 
-    if (reqPost.rows.length === 0){
-        res.status(404).json({
-            message: "Post not found"
-        });
-    }
+        // if (reqPost.rows.length === 0){
+        //     return next(new Error("Couldn't find the requested post"));
+        // }
 
-    res.json(reqPost.rows);
+        res.json(reqPost.rows);
 });
 
 // POST -- New Post
@@ -59,7 +57,7 @@ router.post("/", async (req, res) => {
     newPost.id = Number(newPost.id);
     
     const { id, title, channel, views } = newPost;
-    const result = await pool.query(`
+    await pool.query(`
         INSERT INTO posts (id, title, channel, views)
         VALUES ($1, $2, $3, $4)`
 
@@ -71,7 +69,8 @@ router.post("/", async (req, res) => {
 });
 
 // Edit Post -- PUT request.
-router.put("/:id",async (req, res) =>{
+router.put("/:id",async (req, res) =>
+{
 
     const queryId = Number(req.params.id);
     const { id, title, channel, views } = req.body;
