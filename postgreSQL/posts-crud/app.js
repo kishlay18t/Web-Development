@@ -8,7 +8,7 @@ const postRoutes = require("./route/post");
 function validatePostRequest(reqObject){
     const { id, title, channel, views } = reqObject;
     // ID Validation
-    if (!id || typeof(id) !== "number" || (id < 1)){
+    if (!id || isNaN(Number(id)) || Number(id) < 1){
         return {
             valid: false,
             errors: [

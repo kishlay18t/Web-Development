@@ -70,7 +70,7 @@ router.post("/", async (req, res) => {
 
 // Edit Post -- PUT request.
 router.put("/:id",async (req, res) =>
-{
+    {
 
     const queryId = Number(req.params.id);
     const { id, title, channel, views } = req.body;
