@@ -39,24 +39,24 @@ app.use(express.static("public"));
 app.use(express.json());
 
 // Validate Post
-app.use((req,res,next) => {
-    if (req.method !== "POST"){
-        return next();
-    }
+// app.use((req,res,next) => {
+//     if (req.method !== "POST"){
+//         return next();
+//     }
 
-    const validation = validatePostRequest(req.body);
-    if (!validation.valid){
-        console.log("Check not passed");
-        const err = new Error("Request Validation Failed");
-        err.status = 400;
-        err.errors = validation.errors;
+//     const validation = validatePostRequest(req.body);
+//     if (!validation.valid){
+//         console.log("Check not passed");
+//         const err = new Error("Request Validation Failed");
+//         err.status = 400;
+//         err.errors = validation.errors;
 
-        return next(err);
-    }
+//         return next(err);
+//     }
 
-    console.log("Check passed");
-    next();
-});
+//     console.log("Check passed");
+//     next();
+// });
 
 // Posts router
 app.use("/api/post", postRoutes);
@@ -80,13 +80,15 @@ app.get("/edit-forum/:id", (req, res) => {
     res.sendFile(path.join(__dirname, "views", "edit-post.html"));
 });
 
-// error handler -- must be after the router
+// centralized error handler -- must be after the router
 app.use((err, req, res, next) => {
     console.log(err);
 
     res.status(err.status || 500).json({
-        message: err.message,
-        errors: err.errors
+        // message: err.message,
+        // errors: err.errors
+        err,
+        message: err.message
     });
 });
 

@@ -52,6 +52,7 @@ router.get("/:id", async (req, res, next) => {
 });
 
 // POST -- New Post
+/*
 router.post("/", async (req, res) => {
     const newPost = req.body;
     newPost.id = Number(newPost.id);
@@ -66,6 +67,26 @@ router.post("/", async (req, res) => {
     res.status(201).json({
         message: "Post Created"
     });
+});
+*/
+
+router.post('/', async (req, res, next) => {
+    try {
+        const {id, title, channel, views} = req.body;
+
+        await pool.query(`
+            INSERT INTO posts (id, title, channel, views)
+            VALUES ($1, $2, $3, $4)
+            `, [id, title, channel, views]);
+
+        res.status(201).json({
+            message: 'new post created'
+        })
+    }
+    catch(err){
+        console.log(err);
+        next(err);
+    }
 });
 
 // Edit Post -- PUT request.
