@@ -200,6 +200,14 @@ ALTER COLUMN views
 SET DEFAULT '0';
 ```
 
+## Apply 'UNIQUE' constraint
+Suppose we decide to make title of each post unique.
+```SQL
+ALTER TABLE posts
+ADD CONSTRAINT posts_title_unique
+UNIQUE(title);
+```
+
 ## Table Information
 To check current condition of your database table.
 
